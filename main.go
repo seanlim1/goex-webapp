@@ -6,8 +6,14 @@ import (
 	"net/http"
 )
 
+func GetMessage() (string, error) {
+	name := "SLIM"
+	return fmt.Sprintf("Welcome to %s's world", name), nil
+}
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello world (:")
+	msg, _ := GetMessage()
+	fmt.Fprint(w, msg)
 }
 
 func main() {
